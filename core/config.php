@@ -5,3 +5,5 @@ const config = [
     "password" => "",
     "database" => "social_network"
 ];
+
+define("BASE_URL", "/social_network/");

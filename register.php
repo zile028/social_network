@@ -1,6 +1,6 @@
 <?php
 require "core/init.php";
-
+$page_title = "Register";
 $data = [];
 $error = [];
 

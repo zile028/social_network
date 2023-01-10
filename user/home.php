@@ -1,11 +1,11 @@
 <?php
-require "core/init.php";
+require "../core/init.php";
+
 if (!$Users->isLogged()) {
     redirect(BASE_URL . "login.php");
 }
+$page_title = "User home";
 $user = $Users->getUser($_SESSION["id"]);
-$page_title = "Home";
-require "views/index.view.php"
 
-?>
 
+require "views/home.view.php";
