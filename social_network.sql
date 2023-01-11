@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2023 at 08:31 PM
+-- Generation Time: Jan 11, 2023 at 08:27 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -20,6 +20,53 @@ SET time_zone = "+00:00";
 --
 -- Database: `social_network`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `category`
+--
+
+CREATE TABLE `category` (
+  `id` int(11) NOT NULL,
+  `category` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `category`) VALUES
+(1, 'Books'),
+(2, 'Sport'),
+(3, 'Movies'),
+(4, 'Nature');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE `posts` (
+  `id` int(11) NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `image` varchar(50) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `update_at` timestamp NULL DEFAULT NULL,
+  `public` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`id`, `title`, `text`, `image`, `category_id`, `user_id`, `created_at`, `update_at`, `public`) VALUES
+(1, 'Privi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464616.jpg', 4, 1, '2023-01-11 19:16:56', NULL, 1),
+(2, 'Drugi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464655.jpg', 2, 1, '2023-01-11 19:17:35', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -44,13 +91,25 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gender`, `role`, `created_at`, `update_at`) VALUES
-(1, 'Dejan', 'Zivkovic', 'dejan@gmail.com', '$2y$10$BLEwlazm1eeQaYdl.GMA5ePP1DYrSIN6kfJUnt3BNoWE/FvBtitKW', 'male', 'admin', '2023-01-09 19:00:57', NULL),
-(2, 'Petar', 'Jovanovic', 'petar@gmail.com', '$2y$10$hN6Id3zb1v7D4YZrdCEIseFsCjKF6LMtUdiFckdxicGA7CoBskU/m', 'male', 'user', '2023-01-09 19:12:12', NULL),
-(3, 'Jovan', 'Savic', 'jovan@gmail.com', '$2y$10$xDx0vrGi11s/jcScH/c/iOKUxCWtwQ3adcg3ndmdLvCAbBox37./K', 'male', 'user', '2023-01-09 19:25:54', NULL);
+(1, 'Dejan', 'Zivkovic', 'dejan@gmail.com', '$2y$10$z7a0g4SuJ6FTNb/AuPyktulenjjyvLiKWQVcxBYJa7OtddiVXHM0y', 'male', 'admin', '2023-01-09 19:00:57', '2023-01-11 17:59:15'),
+(2, 'Petar', 'Jovanovic', 'petar@gmail.com', '$2y$10$yLZvyRMHJbEecue0VQCp5.rrKI8amfPlmTau6s.1kk/6EJmGgQXvm', 'male', 'user', '2023-01-09 19:12:12', '2023-01-11 17:57:53'),
+(3, 'Jovan', 'Savic', 'jovan@gmail.com', '$2y$10$yLZvyRMHJbEecue0VQCp5.rrKI8amfPlmTau6s.1kk/6EJmGgQXvm', 'male', 'user', '2023-01-09 19:25:54', '2023-01-11 17:57:53');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -61,6 +120,18 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `category`
+--
+ALTER TABLE `category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

@@ -82,6 +82,34 @@ class Users extends Connection
             return false;
         }
     }
+
+    public function changePassword(array $data)
+    {
+        $user = $this->isExist($data["email"]);
+        if (password_verify($data["old_password"], $user->password)) {
+            $hash_password = password_hash($data["password"], PASSWORD_DEFAULT);
+            $sql = "UPDATE users SET
+                    password = :password,
+                    update_at = NOW()
+                    WHERE email = :email
+                 ";
+            $query = $this->db->prepare($sql);
+            $query->execute([
+                "password" => $hash_password,
+                "email" => $data["email"]
+            ]);
+           
+            if ($query->rowCount() === 1) {
+                return true;
+            } else {
+                $this->err_msg = "Password is not change";
+                return false;
+            }
+        } else {
+            $this->err_msg = "Old password not correct";
+            return false;
+        }
+    }
 }
 
 $Users = new Users(config);

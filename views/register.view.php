@@ -40,6 +40,7 @@
                     <p class="text-danger"><?php echo $error["repeat_password"] ?></p>
                 <?php endif; ?>
                 <input type="password" name="repeat_password" class="form-control mb-3" placeholder=" Repeat password">
+
                 <button class="form-control btn btn-primary">Register</button>
                 <?php if (isset($Users->err_msg)): ?>
                     <p class="alert alert-danger mt-3"><?php echo $Users->err_msg ?></p>
