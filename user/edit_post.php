@@ -4,13 +4,14 @@ require "../core/init.php";
 if (!$Users->isLogged()) {
     redirect(BASE_URL . "login.php");
 }
-$page_title = "Add post";
+$page_title = "Edit post";
 $user = $Users->getUser($_SESSION["id"]);
 $all_category = $Post->getCategory();
+
 $data = [];
 $error = [];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $data["user_id"] = $user->id;
+    $data["id"] = $_POST["id"];
     $data["category_id"] = $_POST["category_id"];
     $data["public"] = $_POST["public"];
 
@@ -52,18 +53,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if (!file_exists(UPLOAD_PATH)) {
                 mkdir(UPLOAD_PATH);
             }
+            if (file_exists(UPLOAD_PATH . $_POST["old_image"])) {
+                unlink(UPLOAD_PATH . $_POST["old_image"]);
+            }
             $isUpload = move_uploaded_file($tmp_name, UPLOAD_PATH . $stored_name);
             $data["image"] = $stored_name;
-
         }
+    } else {
+        $isUpload = true;
+        $data["image"] = $_POST["old_image"];
     }
+    
     if (count($error) === 0 && $isUpload) {
-        if ($Post->addPost($data)) {
+        if ($Post->editPost($data)) {
             redirect(BASE_URL . "user/all_post.php");
+        } else {
+            dd($Post->err_msg);
         }
     }
+
+} else {
+    $post = $Post->getPost($_GET["id"]);
 
 }
 
 
-require "views/add_post.view.php";
+require "views/edit_post.view.php";

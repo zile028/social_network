@@ -24,7 +24,7 @@
                     </div>
                     <div class="card-footer d-flex align-items-center">
                         <a href="single_post.php?id=<?php echo $post->id ?>" class="btn btn-sm btn-info">Read more</a>
-                        <a href="index.php?user_id=<?php echo $post->user_id ?>"
+                        <a href="user_post.php?id=<?php echo $post->user_id ?>"
                            class="btn btn-sm btn-warning m-0"><?php echo $post->first_name . " " . $post->last_name ?></a>
                         <p class="btn btn-sm btn-success m-0"><?php echo $post->created_at ?></p>
                         <p class="btn btn-sm btn-primary m-0"><?php echo $post->category ?></p>

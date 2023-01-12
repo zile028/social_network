@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2023 at 08:27 PM
+-- Generation Time: Jan 12, 2023 at 08:25 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -66,7 +66,9 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`id`, `title`, `text`, `image`, `category_id`, `user_id`, `created_at`, `update_at`, `public`) VALUES
 (1, 'Privi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464616.jpg', 4, 1, '2023-01-11 19:16:56', NULL, 1),
-(2, 'Drugi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464655.jpg', 2, 1, '2023-01-11 19:17:35', NULL, 0);
+(2, 'Drugi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464655.jpg', 2, 1, '2023-01-11 19:17:35', NULL, 1),
+(3, 'Petrov', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos ', '1673551342.jpg', 2, 2, '2023-01-12 18:27:34', '2023-01-12 19:22:22', 1),
+(4, 'Books', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos ', '1673551505.jpg', 1, 2, '2023-01-12 18:28:32', '2023-01-12 19:25:05', 0);
 
 -- --------------------------------------------------------
 
@@ -131,7 +133,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
