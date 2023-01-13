@@ -7,11 +7,14 @@
             <?php require "includes/sidebar.php" ?>
         </div>
         <div class="col-md-10">
+            <form class="d-flex mb-3" action="index.php" method="post">
+                <input class="form-control" type="text" placeholder="Search post title" name="search">
+                <button class="btn btn-info"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
             <?php foreach ($all_post as $post): ?>
                 <div id="<?php echo $post->id ?>" class="card mb-3">
                     <div class="card-header d-flex justify-content-between">
                         <h3><?php echo $post->title ?></h3>
-                        <?php echo $post->public ? '<i class="fa-regular fa-eye"></i>' : '<i class="fa-regular fa-eye-slash"></i>' ?>
                     </div>
                     <div class="card-body">
                         <div class="d-flex">
@@ -28,6 +31,16 @@
                            class="btn btn-sm btn-warning m-0"><?php echo $post->first_name . " " . $post->last_name ?></a>
                         <p class="btn btn-sm btn-success m-0"><?php echo $post->created_at ?></p>
                         <p class="btn btn-sm btn-primary m-0"><?php echo $post->category ?></p>
+
+                        <a class="ms-auto text-decoration-none" href="voting.php?post_id=<?php echo $post->id ?>">
+
+                            <?php if (isset($user_voting[$post->id])): ?>
+                                <i class="fa-solid fa-thumbs-up"></i>
+                            <?php else: ?>
+                                <i class="fa-regular fa-thumbs-up"></i>
+                            <?php endif; ?>
+                            <?php echo $post->number_voting ?>
+                        </a>
                     </div>
 
                 </div>

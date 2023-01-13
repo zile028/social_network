@@ -35,6 +35,8 @@
                             <p class="btn btn-sm btn-success m-0"><?php echo $post->created_at ?></p>
                             <p class="btn btn-sm btn-primary m-0"><?php echo $post->category ?></p>
                             <p class="btn btn-sm btn-warning m-0"><?php echo $post->first_name . " " . $post->last_name ?></p>
+                            <a class="btn btn-sm btn-danger m-0 ms-auto"
+                               href="user/delete_post.php?id=<?php echo $post->id ?>">Delete</a>
                         </div>
 
                     </div>

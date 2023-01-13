@@ -63,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $isUpload = true;
         $data["image"] = $_POST["old_image"];
     }
-    
+
     if (count($error) === 0 && $isUpload) {
         if ($Post->editPost($data)) {
             redirect(BASE_URL . "user/all_post.php");

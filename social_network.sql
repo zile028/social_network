@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2023 at 08:25 PM
+-- Generation Time: Jan 13, 2023 at 08:27 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -65,10 +65,9 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `text`, `image`, `category_id`, `user_id`, `created_at`, `update_at`, `public`) VALUES
-(1, 'Privi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464616.jpg', 4, 1, '2023-01-11 19:16:56', NULL, 1),
+(1, 'Privi post', ' Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464616.jpg', 4, 1, '2023-01-11 19:16:56', '2023-01-13 19:15:33', 1),
 (2, 'Drugi post', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos et eveniet exercitationem fugiat hic nam nobis non nulla quibusdam, recusandae rerum sit, voluptatibus. Aliquam asperiores aut delectus dolorem earum eligendi labore laudantium odit optio sint. Dolorem, excepturi.', '1673464655.jpg', 2, 1, '2023-01-11 19:17:35', NULL, 1),
-(3, 'Petrov', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos ', '1673551342.jpg', 2, 2, '2023-01-12 18:27:34', '2023-01-12 19:22:22', 1),
-(4, 'Books', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aut cum deserunt, dignissimos, doloremque eum eveniet in incidunt iste minus nam nobis officia qui quia sit veritatis voluptas voluptatibus! Ab aut dignissimos doloribus facilis molestias mollitia non numquam tenetur voluptatum. Architecto consequatur cum dignissimos est, incidunt, molestiae nulla obcaecati perferendis placeat quasi quidem quis quos reiciendis sit tempore tenetur, unde veniam vitae voluptas voluptatem. Adipisci, consectetur cum doloribus dolorum earum enim eos ', '1673551505.jpg', 1, 2, '2023-01-12 18:28:32', '2023-01-12 19:25:05', 0);
+(5, 'Petrov post', ' With our new Icon Wizard, you can magically add a modifier – like circle-plus, slash, or even poop – to almost any Font Awesome icon. Available now to Font Awesome Pro subscribers.\r\nExplore Font Awesome Sharp!\r\nFont Awesome Sharp Solid, the first style in our new Sharp family, is ready to use when you need a special touch of class for your project! Read the announcement and see what\'s new in the 6.2 release. ', '1673636226.jpg', 2, 2, '2023-01-13 18:57:06', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -97,6 +96,28 @@ INSERT INTO `users` (`id`, `first_name`, `last_name`, `email`, `password`, `gend
 (2, 'Petar', 'Jovanovic', 'petar@gmail.com', '$2y$10$yLZvyRMHJbEecue0VQCp5.rrKI8amfPlmTau6s.1kk/6EJmGgQXvm', 'male', 'user', '2023-01-09 19:12:12', '2023-01-11 17:57:53'),
 (3, 'Jovan', 'Savic', 'jovan@gmail.com', '$2y$10$yLZvyRMHJbEecue0VQCp5.rrKI8amfPlmTau6s.1kk/6EJmGgQXvm', 'male', 'user', '2023-01-09 19:25:54', '2023-01-11 17:57:53');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `voting`
+--
+
+CREATE TABLE `voting` (
+  `id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `voting`
+--
+
+INSERT INTO `voting` (`id`, `post_id`, `user_id`) VALUES
+(9, 2, 2),
+(16, 2, 1),
+(17, 1, 1),
+(19, 2, 3);
+
 --
 -- Indexes for dumped tables
 --
@@ -111,13 +132,21 @@ ALTER TABLE `category`
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`);
 
 --
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `voting`
+--
+ALTER TABLE `voting`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post_id` (`post_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -133,13 +162,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `voting`
+--
+ALTER TABLE `voting`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
