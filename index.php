@@ -1,5 +1,6 @@
 <?php
 require "core/init.php";
+
 if (!$Users->isLogged()) {
     redirect(BASE_URL . "login.php");
 }

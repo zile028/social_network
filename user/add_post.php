@@ -25,38 +25,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $error["text"] = "Post text is required!";
     }
-//    VALIDATE IMAGE
-//    check size
-//    check type
-//    generate file name
-//    check upload folder is exists
+
     $image = $_FILES["image"];
+    $allow_type = ["jpg", "jpeg", "png", "gif"];
+    $upload = new Upload($image, $allow_type, 3 * MB);
     $isUpload = false;
-    if (!empty($image["name"])) {
-        $file_size = $image["size"];
-        $file_name = $image["name"];
-        $tmp_name = $image["tmp_name"];
-        $file_type = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-        $stored_name = time() . "." . $file_type;
-        $allow_type = ["jpg", "jpeg", "png", "gif"];
-        $error_img = [];
-        if (!in_array($file_type, $allow_type)) {
-            $error_img["file_type"] = "This file type is not allowed, allowed type is: " . implode(", ", $allow_type);
-        }
-
-        if ($file_size > 3 * MB) {
-            $error_img["file_size"] = "This file is to big, allowed size is 3MB";
-        }
-
-        if (count($error_img) === 0) {
-            if (!file_exists(UPLOAD_PATH)) {
-                mkdir(UPLOAD_PATH);
-            }
-            $isUpload = move_uploaded_file($tmp_name, UPLOAD_PATH . $stored_name);
-            $data["image"] = $stored_name;
-
-        }
+    if ($upload->validate()) {
+        $isUpload = $upload->storeFile(UPLOAD_PATH);
+        $data["image"] = $upload->stored_name;
     }
+
     if (count($error) === 0 && $isUpload) {
         if ($Post->addPost($data)) {
             redirect(BASE_URL . "user/all_post.php");
